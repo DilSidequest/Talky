@@ -63,7 +63,7 @@ src/app/
 
 ## Layout Components
 
-### Root Layout (`app/layout.tsx`)
+## Root Layout (`app/layout.tsx`)
 ```typescript
 export default function RootLayout({
   children,
@@ -85,7 +85,7 @@ export default function RootLayout({
 }
 ```
 
-### Auth Layout (`app/(auth)/layout.tsx`)
+## Auth Layout (`app/(auth)/layout.tsx`)
 ```typescript
 export default function AuthLayout({
   children,
@@ -96,7 +96,7 @@ export default function AuthLayout({
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white to-blue-50">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-forest-green">
+          <h1 className="text-3xl font-bold text-forest-green text-center">
             Talky<span className="text-electric-blue">.</span>
           </h1>
         </div>

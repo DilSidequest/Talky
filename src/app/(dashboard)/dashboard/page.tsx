@@ -1,18 +1,21 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { MessageCircle, Video, Camera, Phone, TrendingUp, Users, Clock, Globe } from 'lucide-react'
+import { MessageCircle, Video, Camera, Phone, TrendingUp, Users, Clock, Globe, Settings, BarChart3, Zap, Languages } from 'lucide-react'
 import Link from 'next/link'
 
 export default function DashboardPage() {
   return (
     <div className="space-y-6">
       {/* Welcome Section */}
-      <div className="space-y-2">
-        <h1 className="text-3xl font-bold text-forest-green">Welcome to Talky</h1>
-        <p className="text-text-muted">
-          Your AI-powered communication hub. Break language barriers and connect with the world.
-        </p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-forest-green text-center">Welcome to Talky</h1>
+        </div>
+        <Button variant="outline" size="sm" className="flex items-center gap-2">
+          <Settings className="w-4 h-4" />
+          Customize Dashboard
+        </Button>
       </div>
 
       {/* Quick Actions */}
@@ -28,9 +31,6 @@ export default function DashboardPage() {
               </div>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-text-muted">
-                Start conversations with AI translation
-              </p>
             </CardContent>
           </Card>
         </Link>
@@ -46,9 +46,6 @@ export default function DashboardPage() {
               </div>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-text-muted">
-                Scan and translate text from images
-              </p>
             </CardContent>
           </Card>
         </Link>
@@ -64,9 +61,6 @@ export default function DashboardPage() {
               </div>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-text-muted">
-                Make AI-powered phone calls
-              </p>
             </CardContent>
           </Card>
         </Link>
@@ -82,23 +76,22 @@ export default function DashboardPage() {
               </div>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-text-muted">
-                Configure languages and preferences
-              </p>
             </CardContent>
           </Card>
         </Link>
       </div>
 
-      {/* Stats Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card className="border-border-light">
+      {/* Enhanced Stats Overview */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <Card className="border-border-light hover:shadow-md transition-shadow">
           <CardHeader className="pb-3">
             <div className="flex items-center justify-between">
               <CardTitle className="text-sm font-medium text-text-muted">
                 Messages Translated
               </CardTitle>
-              <TrendingUp className="w-4 h-4 text-electric-blue" />
+              <div className="p-2 bg-electric-blue-light rounded-lg">
+                <TrendingUp className="w-4 h-4 text-electric-blue" />
+              </div>
             </div>
           </CardHeader>
           <CardContent>
@@ -109,13 +102,15 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="border-border-light">
+        <Card className="border-border-light hover:shadow-md transition-shadow">
           <CardHeader className="pb-3">
             <div className="flex items-center justify-between">
               <CardTitle className="text-sm font-medium text-text-muted">
                 Active Conversations
               </CardTitle>
-              <Users className="w-4 h-4 text-electric-blue" />
+              <div className="p-2 bg-electric-blue-light rounded-lg">
+                <Users className="w-4 h-4 text-electric-blue" />
+              </div>
             </div>
           </CardHeader>
           <CardContent>
@@ -126,13 +121,15 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="border-border-light">
+        <Card className="border-border-light hover:shadow-md transition-shadow">
           <CardHeader className="pb-3">
             <div className="flex items-center justify-between">
               <CardTitle className="text-sm font-medium text-text-muted">
                 Languages Used
               </CardTitle>
-              <Globe className="w-4 h-4 text-electric-blue" />
+              <div className="p-2 bg-electric-blue-light rounded-lg">
+                <Globe className="w-4 h-4 text-electric-blue" />
+              </div>
             </div>
           </CardHeader>
           <CardContent>
@@ -142,18 +139,115 @@ export default function DashboardPage() {
             </p>
           </CardContent>
         </Card>
+
+        <Card className="border-border-light hover:shadow-md transition-shadow">
+          <CardHeader className="pb-3">
+            <div className="flex items-center justify-between">
+              <CardTitle className="text-sm font-medium text-text-muted">
+                Translation Accuracy
+              </CardTitle>
+              <div className="p-2 bg-electric-blue-light rounded-lg">
+                <Zap className="w-4 h-4 text-electric-blue" />
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-forest-green">98.5%</div>
+            <p className="text-xs text-text-muted">
+              <span className="text-green-600">+0.3%</span> this week
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Analytics & Insights */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <Card className="border-border-light">
+          <CardHeader>
+            <CardTitle className="flex items-center justify-center space-x-2">
+              <BarChart3 className="w-5 h-5 text-electric-blue" />
+              <span>Translation Usage</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2">
+                  <Badge variant="secondary">ES</Badge>
+                  <span className="text-sm font-medium">Spanish</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-20 h-2 bg-gray-200 rounded-full">
+                    <div className="w-16 h-2 bg-electric-blue rounded-full"></div>
+                  </div>
+                  <span className="text-xs text-text-muted">80%</span>
+                </div>
+              </div>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2">
+                  <Badge variant="secondary">FR</Badge>
+                  <span className="text-sm font-medium">French</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-20 h-2 bg-gray-200 rounded-full">
+                    <div className="w-12 h-2 bg-electric-blue rounded-full"></div>
+                  </div>
+                  <span className="text-xs text-text-muted">60%</span>
+                </div>
+              </div>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2">
+                  <Badge variant="secondary">JA</Badge>
+                  <span className="text-sm font-medium">Japanese</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-20 h-2 bg-gray-200 rounded-full">
+                    <div className="w-8 h-2 bg-electric-blue rounded-full"></div>
+                  </div>
+                  <span className="text-xs text-text-muted">40%</span>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="border-border-light">
+          <CardHeader>
+            <CardTitle className="flex items-center justify-center space-x-2">
+              <Languages className="w-5 h-5 text-electric-blue" />
+              <span>Quick Language Settings</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-medium">Primary Language</span>
+                <Badge className="bg-electric-blue text-white">English</Badge>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-medium">Auto-detect</span>
+                <Badge variant="outline" className="text-green-600 border-green-600">Enabled</Badge>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-medium">Translation Mode</span>
+                <Badge variant="secondary">Real-time</Badge>
+              </div>
+            </div>
+            <Button variant="outline" size="sm" className="w-full mt-4">
+              <Settings className="w-4 h-4 mr-2" />
+              Configure Languages
+            </Button>
+          </CardContent>
+        </Card>
       </div>
 
       {/* Recent Activity */}
       <Card className="border-border-light">
         <CardHeader>
-          <CardTitle className="flex items-center space-x-2">
+          <CardTitle className="flex items-center justify-center space-x-2">
             <Clock className="w-5 h-5 text-electric-blue" />
             <span>Recent Activity</span>
           </CardTitle>
-          <CardDescription>
-            Your latest conversations and translations
-          </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg">

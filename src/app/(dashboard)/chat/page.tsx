@@ -62,14 +62,13 @@ export default function ChatPage() {
           {/* Chat Header */}
           <div className="flex items-center justify-between">
             <div>
-          <h1 className="text-3xl font-bold text-forest-green">Conversations</h1>
-          <p className="text-text-secondary">Connect with people worldwide</p>
-        </div>
-        <Button className="bg-electric-blue hover:bg-electric-blue-hover">
-          <Plus className="w-4 h-4 mr-2" />
-          New Chat
-        </Button>
-      </div>
+              <h1 className="text-3xl font-bold text-forest-green text-center">Conversations</h1>
+            </div>
+            <Button className="bg-electric-blue hover:bg-electric-blue-hover">
+              <Plus className="w-4 h-4 mr-2" />
+              New Chat
+            </Button>
+          </div>
 
       {/* Search */}
       <div className="relative mb-6">
@@ -132,12 +131,9 @@ export default function ChatPage() {
           {conversations.length === 0 && (
             <div className="text-center py-12">
               <MessageCircle className="w-16 h-16 text-text-muted mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-forest-green mb-2">
+              <h3 className="text-lg font-semibold text-forest-green text-center mb-6">
                 No conversations yet
               </h3>
-              <p className="text-text-secondary mb-6">
-                Start your first conversation and break down language barriers
-              </p>
               <Button className="bg-electric-blue hover:bg-electric-blue-hover">
                 <Plus className="w-4 h-4 mr-2" />
                 Start Chatting
@@ -150,12 +146,9 @@ export default function ChatPage() {
           {/* Call Interface */}
           <div className="text-center py-12">
             <Video className="w-16 h-16 text-electric-blue mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-forest-green mb-2">
+            <h3 className="text-lg font-semibold text-forest-green text-center mb-6">
               Video Calls with Translation
             </h3>
-            <p className="text-text-secondary mb-6">
-              Make video calls with real-time AI translation
-            </p>
             <div className="space-y-4 max-w-md mx-auto">
               <Button className="w-full bg-electric-blue hover:bg-electric-blue-hover">
                 <Video className="w-4 h-4 mr-2" />

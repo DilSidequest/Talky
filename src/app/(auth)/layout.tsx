@@ -10,9 +10,6 @@ export default function AuthLayout({
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <Logo size="xl" />
-          <p className="text-text-secondary mt-2">
-            Connect across languages
-          </p>
         </div>
         {children}
       </div>

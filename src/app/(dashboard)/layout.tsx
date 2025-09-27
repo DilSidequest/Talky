@@ -3,6 +3,8 @@
 import { UserButton } from '@clerk/nextjs'
 import { Logo } from '@/components/ui/logo'
 import { Button } from '@/components/ui/button'
+import { Breadcrumb } from '@/components/navigation/breadcrumb'
+import { PageTransition } from '@/components/transitions/page-transition'
 import { MessageCircle, Camera, Phone, Settings, Home } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
@@ -67,7 +69,10 @@ export default function DashboardLayout({
 
         {/* Main Content */}
         <main className="flex-1 p-6 pb-20 md:pb-6">
-          {children}
+          <Breadcrumb />
+          <PageTransition>
+            {children}
+          </PageTransition>
         </main>
       </div>
 
