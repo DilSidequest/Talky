@@ -25,7 +25,7 @@ export default function DashboardLayout({
   const pathname = usePathname()
 
   return (
-    <div className="min-h-screen bg-bg-primary">
+    <div className="min-h-screen bg-bg-primary overflow-x-hidden">
       {/* Desktop Header */}
       <header className="hidden md:flex items-center justify-between p-6 border-b border-border-light">
         <Logo size="lg" />
@@ -68,10 +68,14 @@ export default function DashboardLayout({
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 p-6 pb-20 md:pb-6">
-          <Breadcrumb />
+        <main className="flex-1 p-4 pb-20 md:p-6 md:pb-6 overflow-x-hidden min-w-0">
+          <div className="md:block hidden">
+            <Breadcrumb />
+          </div>
           <PageTransition>
-            {children}
+            <div className="w-full overflow-x-hidden">
+              {children}
+            </div>
           </PageTransition>
         </main>
       </div>

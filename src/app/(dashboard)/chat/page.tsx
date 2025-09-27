@@ -1,52 +1,127 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Card } from '@/components/ui/card'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
-import { Search, Plus, Languages, MessageCircle, Video, Phone } from 'lucide-react'
+import { ContactsList, type Contact } from '@/components/chat/contacts-list'
+import { MessageCircle, Video, Phone, Plus } from 'lucide-react'
+import { useState } from 'react'
 
-// Mock data for demonstration
-const conversations = [
+// Mock data for demonstration - enhanced with new Contact interface
+const mockContacts: Contact[] = [
   {
     id: 1,
     name: 'Maria Garcia',
     lastMessage: 'Hola! ¿Cómo estás?',
     translation: 'Hello! How are you?',
-    time: '2m ago',
-    unread: 2,
+    timestamp: new Date(Date.now() - 2 * 60 * 1000).toISOString(), // 2 minutes ago
+    unreadCount: 2,
     language: 'ES',
-    avatar: '/avatars/maria.jpg'
+    avatar: '/avatars/maria.jpg',
+    status: 'online',
+    isPinned: true
   },
   {
     id: 2,
     name: 'Hiroshi Tanaka',
     lastMessage: 'こんにちは、元気ですか？',
     translation: 'Hello, how are you?',
-    time: '1h ago',
-    unread: 0,
+    timestamp: new Date(Date.now() - 60 * 60 * 1000).toISOString(), // 1 hour ago
+    unreadCount: 0,
     language: 'JA',
-    avatar: '/avatars/hiroshi.jpg'
+    avatar: '/avatars/hiroshi.jpg',
+    status: 'away',
+    lastSeen: '30 minutes ago'
   },
   {
     id: 3,
     name: 'Pierre Dubois',
     lastMessage: 'Bonjour, comment allez-vous?',
     translation: 'Hello, how are you?',
-    time: '3h ago',
-    unread: 1,
+    timestamp: new Date(Date.now() - 3 * 60 * 60 * 1000).toISOString(), // 3 hours ago
+    unreadCount: 1,
     language: 'FR',
-    avatar: '/avatars/pierre.jpg'
+    avatar: '/avatars/pierre.jpg',
+    status: 'offline',
+    lastSeen: '2 hours ago'
+  },
+  {
+    id: 4,
+    name: 'Anna Schmidt',
+    lastMessage: 'Wie geht es dir heute?',
+    translation: 'How are you today?',
+    timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(), // 5 hours ago
+    unreadCount: 0,
+    language: 'DE',
+    avatar: '/avatars/anna.jpg',
+    status: 'busy',
+    isTyping: false
+  },
+  {
+    id: 5,
+    name: 'Chen Wei',
+    lastMessage: '你好吗？',
+    translation: 'How are you?',
+    timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(), // 1 day ago
+    unreadCount: 3,
+    language: 'ZH',
+    avatar: '/avatars/chen.jpg',
+    status: 'online',
+    isTyping: true
   }
 ]
 
 export default function ChatPage() {
+  const [showTranslations, setShowTranslations] = useState(true)
+
+  const handleContactSelect = (contact: Contact) => {
+    console.log('Selected contact:', contact)
+    // Navigation is handled by the Link in ContactItem
+  }
+
+  const handleNewChat = () => {
+    console.log('Starting new chat...')
+    // TODO: Implement new chat creation flow
+  }
+
+  const handleNewContact = () => {
+    console.log('Adding new contact...')
+    // TODO: Implement new contact creation flow
+  }
+
+  const handleArchiveContact = (contact: Contact) => {
+    console.log('Archiving contact:', contact.name)
+    // TODO: Implement contact archiving
+  }
+
+  const handlePinContact = (contact: Contact) => {
+    console.log('Toggling pin for contact:', contact.name)
+    // TODO: Implement contact pinning
+  }
+
+  const handleDeleteContact = (contact: Contact) => {
+    console.log('Deleting contact:', contact.name)
+    // TODO: Implement contact deletion
+  }
+
+  const handleMuteContact = (contact: Contact) => {
+    console.log('Toggling mute for contact:', contact.name)
+    // TODO: Implement contact muting
+  }
+
+  const handleCallContact = (contact: Contact) => {
+    console.log('Calling contact:', contact.name)
+    // TODO: Implement voice call
+  }
+
+  const handleVideoCallContact = (contact: Contact) => {
+    console.log('Video calling contact:', contact.name)
+    // TODO: Implement video call
+  }
+
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="w-full max-w-none md:max-w-6xl md:mx-auto overflow-hidden">
       {/* Chat/Call Toggle */}
-      <Tabs defaultValue="chat" className="w-full mb-6">
+      <Tabs defaultValue="chat" className="w-full mb-4 md:mb-6">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="chat" className="flex items-center gap-2">
             <MessageCircle className="w-4 h-4" />
@@ -59,96 +134,31 @@ export default function ChatPage() {
         </TabsList>
 
         <TabsContent value="chat" className="space-y-6">
-          {/* Chat Header */}
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-bold text-forest-green text-center">Conversations</h1>
-            </div>
-            <Button className="bg-electric-blue hover:bg-electric-blue-hover">
-              <Plus className="w-4 h-4 mr-2" />
-              New Chat
-            </Button>
-          </div>
-
-      {/* Search */}
-      <div className="relative mb-6">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-text-muted w-4 h-4" />
-        <Input 
-          placeholder="Search conversations..." 
-          className="pl-10"
-        />
-      </div>
-
-      {/* Conversations List */}
-      <div className="space-y-4">
-        {conversations.map((conversation) => (
-          <Card key={conversation.id} className="p-4 hover:shadow-md transition-shadow cursor-pointer">
-            <div className="flex items-center gap-4">
-              <Avatar className="w-12 h-12">
-                <AvatarImage src={conversation.avatar} alt={conversation.name} />
-                <AvatarFallback>{conversation.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-              </Avatar>
-              
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-1">
-                  <h3 className="font-semibold text-forest-green truncate">
-                    {conversation.name}
-                  </h3>
-                  <Badge variant="secondary" className="text-xs">
-                    {conversation.language}
-                  </Badge>
-                </div>
-                
-                <div className="space-y-1">
-                  <p className="text-sm text-text-secondary truncate">
-                    {conversation.lastMessage}
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <Languages className="w-3 h-3 text-electric-blue" />
-                    <p className="text-xs text-text-muted truncate">
-                      {conversation.translation}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex flex-col items-end gap-2">
-                <span className="text-xs text-text-muted">
-                  {conversation.time}
-                </span>
-                {conversation.unread > 0 && (
-                  <Badge className="bg-electric-blue text-white text-xs">
-                    {conversation.unread}
-                  </Badge>
-                )}
-              </div>
-            </div>
-          </Card>
-        ))}
-      </div>
-
-          {/* Empty State (when no conversations) */}
-          {conversations.length === 0 && (
-            <div className="text-center py-12">
-              <MessageCircle className="w-16 h-16 text-text-muted mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-forest-green text-center mb-6">
-                No conversations yet
-              </h3>
-              <Button className="bg-electric-blue hover:bg-electric-blue-hover">
-                <Plus className="w-4 h-4 mr-2" />
-                Start Chatting
-              </Button>
-            </div>
-          )}
+          <ContactsList
+            contacts={mockContacts}
+            onContactSelect={handleContactSelect}
+            onNewChat={handleNewChat}
+            onNewContact={handleNewContact}
+            onArchiveContact={handleArchiveContact}
+            onPinContact={handlePinContact}
+            onDeleteContact={handleDeleteContact}
+            onMuteContact={handleMuteContact}
+            onCallContact={handleCallContact}
+            onVideoCallContact={handleVideoCallContact}
+            showTranslations={showTranslations}
+          />
         </TabsContent>
 
         <TabsContent value="call" className="space-y-6">
           {/* Call Interface */}
           <div className="text-center py-12">
             <Video className="w-16 h-16 text-electric-blue mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-forest-green text-center mb-6">
+            <h3 className="text-lg font-semibold text-forest-green mb-2">
               Video Calls with Translation
             </h3>
+            <p className="text-text-muted mb-8 max-w-md mx-auto">
+              Start video or audio calls with real-time translation to communicate across languages
+            </p>
             <div className="space-y-4 max-w-md mx-auto">
               <Button className="w-full bg-electric-blue hover:bg-electric-blue-hover">
                 <Video className="w-4 h-4 mr-2" />

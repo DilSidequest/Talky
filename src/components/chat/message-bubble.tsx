@@ -2,26 +2,10 @@
 
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Languages, Volume2, Copy, MoreHorizontal, Play } from 'lucide-react'
+import { Languages, Volume2, Copy, MoreHorizontal, Play, Check, CheckCheck, Clock, AlertCircle } from 'lucide-react'
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
-
-export interface Message {
-  id: string | number
-  senderId: string
-  content: string
-  translation?: string
-  timestamp: string
-  isTranslated: boolean
-  type: 'text' | 'audio' | 'video' | 'image' | 'file'
-  language?: string
-  confidence?: number
-  audioUrl?: string
-  videoUrl?: string
-  imageUrl?: string
-  fileName?: string
-  fileSize?: string
-}
+import { Message } from '@/types/chat'
 
 interface MessageBubbleProps {
   message: Message

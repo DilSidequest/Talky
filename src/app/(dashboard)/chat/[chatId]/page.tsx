@@ -3,9 +3,11 @@
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
-import { MessageBubble, TypingIndicator, type Message } from '@/components/chat/message-bubble'
+import { MessageBubble, TypingIndicator } from '@/components/chat/message-bubble'
 import { MessageInput } from '@/components/chat/message-input'
 import { TranslationControls } from '@/components/chat/translation-controls'
+import { ContactStatus } from '@/components/chat/contact-status'
+import { Message, Contact } from '@/types/chat'
 import {
   ArrowLeft,
   Phone,
@@ -17,13 +19,15 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 // Mock data for the conversation
-const mockConversation = {
+const mockConversation: Contact = {
   id: '1',
   name: 'Maria Garcia',
   avatar: '/avatars/maria.jpg',
   language: 'ES',
   status: 'online',
-  lastSeen: 'Active now'
+  lastSeen: 'Active now',
+  timestamp: new Date().toISOString(),
+  unreadCount: 0
 }
 
 const mockMessages: Message[] = [
@@ -144,7 +148,16 @@ export default function ChatConversationPage({ params }: ChatPageProps) {
                 {mockConversation.language}
               </Badge>
             </div>
-            <p className="text-xs text-text-muted">{mockConversation.lastSeen}</p>
+            <div className="flex items-center space-x-2 mt-1">
+              <ContactStatus
+                status={mockConversation.status}
+                isTyping={isTyping}
+                lastSeen={mockConversation.lastSeen}
+                showLabel={true}
+                showLastSeen={true}
+                size="sm"
+              />
+            </div>
           </div>
         </div>
 
