@@ -2,84 +2,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { MessageCircle, Video, Camera, Phone, TrendingUp, Users, Clock, Globe, Settings, BarChart3, Zap, Languages } from 'lucide-react'
-import Link from 'next/link'
 
 export default function DashboardPage() {
   return (
     <div className="space-y-6">
       {/* Welcome Section */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-forest-green text-center">Welcome to Talky</h1>
-        </div>
-        <Button variant="outline" size="sm" className="flex items-center gap-2">
-          <Settings className="w-4 h-4" />
-          Customize Dashboard
-        </Button>
+      <div className="text-center">
+        <h1 className="text-3xl font-bold text-forest-green">Welcome to Talky</h1>
       </div>
 
-      {/* Quick Actions */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Link href="/chat">
-          <Card className="hover:shadow-md transition-shadow cursor-pointer border-border-light">
-            <CardHeader className="pb-3">
-              <div className="flex items-center space-x-2">
-                <div className="p-2 bg-electric-blue-light rounded-lg">
-                  <MessageCircle className="w-5 h-5 text-electric-blue" />
-                </div>
-                <CardTitle className="text-lg">Chat</CardTitle>
-              </div>
-            </CardHeader>
-            <CardContent>
-            </CardContent>
-          </Card>
-        </Link>
 
-        <Link href="/ocr">
-          <Card className="hover:shadow-md transition-shadow cursor-pointer border-border-light">
-            <CardHeader className="pb-3">
-              <div className="flex items-center space-x-2">
-                <div className="p-2 bg-electric-blue-light rounded-lg">
-                  <Camera className="w-5 h-5 text-electric-blue" />
-                </div>
-                <CardTitle className="text-lg">OCR Scanner</CardTitle>
-              </div>
-            </CardHeader>
-            <CardContent>
-            </CardContent>
-          </Card>
-        </Link>
-
-        <Link href="/ai-caller">
-          <Card className="hover:shadow-md transition-shadow cursor-pointer border-border-light">
-            <CardHeader className="pb-3">
-              <div className="flex items-center space-x-2">
-                <div className="p-2 bg-electric-blue-light rounded-lg">
-                  <Phone className="w-5 h-5 text-electric-blue" />
-                </div>
-                <CardTitle className="text-lg">AI Caller</CardTitle>
-              </div>
-            </CardHeader>
-            <CardContent>
-            </CardContent>
-          </Card>
-        </Link>
-
-        <Link href="/settings">
-          <Card className="hover:shadow-md transition-shadow cursor-pointer border-border-light">
-            <CardHeader className="pb-3">
-              <div className="flex items-center space-x-2">
-                <div className="p-2 bg-electric-blue-light rounded-lg">
-                  <Globe className="w-5 h-5 text-electric-blue" />
-                </div>
-                <CardTitle className="text-lg">Settings</CardTitle>
-              </div>
-            </CardHeader>
-            <CardContent>
-            </CardContent>
-          </Card>
-        </Link>
-      </div>
 
       {/* Enhanced Stats Overview */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

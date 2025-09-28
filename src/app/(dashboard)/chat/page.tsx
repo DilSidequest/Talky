@@ -3,8 +3,11 @@
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 import { ContactsList, type Contact } from '@/components/chat/contacts-list'
+import { CallSelectionInterface } from '@/components/call/call-selection-interface'
+import { CallCreationModal } from '@/components/call/call-creation-modal'
 import { MessageCircle, Video, Phone, Plus } from 'lucide-react'
 import { useState } from 'react'
+import { MeetingRoom } from '@/types/meeting-room'
 
 // Mock data for demonstration - enhanced with new Contact interface
 const mockContacts: Contact[] = [
@@ -72,6 +75,9 @@ const mockContacts: Contact[] = [
 
 export default function ChatPage() {
   const [showTranslations, setShowTranslations] = useState(true)
+  const [showCallModal, setShowCallModal] = useState(false)
+  const [preSelectedContacts, setPreSelectedContacts] = useState<Contact[]>([])
+  const [defaultCallType, setDefaultCallType] = useState<'video' | 'audio'>('video')
 
   const handleContactSelect = (contact: Contact) => {
     console.log('Selected contact:', contact)
@@ -110,12 +116,22 @@ export default function ChatPage() {
 
   const handleCallContact = (contact: Contact) => {
     console.log('Calling contact:', contact.name)
-    // TODO: Implement voice call
+    setPreSelectedContacts([contact])
+    setDefaultCallType('audio')
+    setShowCallModal(true)
   }
 
   const handleVideoCallContact = (contact: Contact) => {
     console.log('Video calling contact:', contact.name)
-    // TODO: Implement video call
+    setPreSelectedContacts([contact])
+    setDefaultCallType('video')
+    setShowCallModal(true)
+  }
+
+  const handleCreateCall = (room: MeetingRoom) => {
+    console.log('Created meeting room:', room)
+    // Navigate to the call page
+    window.location.href = `/call/${room.id}?type=${room.type}&password=${room.password}`
   }
 
   return (
@@ -150,28 +166,23 @@ export default function ChatPage() {
         </TabsContent>
 
         <TabsContent value="call" className="space-y-6">
-          {/* Call Interface */}
-          <div className="text-center py-12">
-            <Video className="w-16 h-16 text-electric-blue mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-forest-green mb-2">
-              Video Calls with Translation
-            </h3>
-            <p className="text-text-muted mb-8 max-w-md mx-auto">
-              Start video or audio calls with real-time translation to communicate across languages
-            </p>
-            <div className="space-y-4 max-w-md mx-auto">
-              <Button className="w-full bg-electric-blue hover:bg-electric-blue-hover">
-                <Video className="w-4 h-4 mr-2" />
-                Start Video Call
-              </Button>
-              <Button variant="outline" className="w-full">
-                <Phone className="w-4 h-4 mr-2" />
-                Start Audio Call
-              </Button>
-            </div>
-          </div>
+          {/* Call Selection Interface */}
+          <CallSelectionInterface />
         </TabsContent>
       </Tabs>
+
+      {/* Call Creation Modal */}
+      <CallCreationModal
+        isOpen={showCallModal}
+        onClose={() => {
+          setShowCallModal(false)
+          setPreSelectedContacts([])
+        }}
+        onCreateCall={handleCreateCall}
+        availableContacts={mockContacts}
+        preSelectedContacts={preSelectedContacts}
+        defaultCallType={defaultCallType}
+      />
     </div>
   )
 }

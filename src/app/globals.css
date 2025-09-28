@@ -15,35 +15,40 @@ html, body {
 }
 
 :root {
-  /* Primary Colors */
-  --electric-blue: #0066FF;
-  --electric-blue-hover: #0052CC;
-  --electric-blue-light: #E6F2FF;
+  /* Primary Colors - Light Blue Theme */
+  --electric-blue: #3B82F6;
+  --electric-blue-hover: #2563EB;
+  --electric-blue-light: #EFF6FF;
+  --electric-blue-lighter: #F0F9FF;
 
-  /* Secondary Colors */
+  /* Secondary Colors - Light Theme */
   --white: #FFFFFF;
-  --off-white: #FAFAFA;
+  --off-white: #FEFEFE;
+  --light-gray: #F8FAFC;
+  --lighter-gray: #F1F5F9;
 
-  /* Text Colors */
-  --forest-green: #0D2818;
-  --forest-green-light: #1A3D2E;
-  --text-secondary: #4A5568;
-  --text-muted: #718096;
+  /* Text Colors - Light Theme */
+  --text-primary: #1E293B;
+  --text-secondary: #64748B;
+  --text-muted: #94A3B8;
+  --text-light: #CBD5E1;
 
-  /* Background Colors */
+  /* Background Colors - All Light */
   --bg-primary: #FFFFFF;
-  --bg-secondary: #F7FAFC;
-  --bg-accent: #E6F2FF;
+  --bg-secondary: #F8FAFC;
+  --bg-accent: #EFF6FF;
+  --bg-hover: #F1F5F9;
 
-  /* Border Colors */
+  /* Border Colors - Light */
   --border-light: #E2E8F0;
   --border-medium: #CBD5E0;
+  --border-blue: #BFDBFE;
 
   /* Status Colors */
-  --success: #48BB78;
-  --warning: #ED8936;
-  --error: #F56565;
-  --info: #4299E1;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  --info: #3B82F6;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -83,12 +88,15 @@ html, body {
   --color-electric-blue: var(--electric-blue);
   --color-electric-blue-hover: var(--electric-blue-hover);
   --color-electric-blue-light: var(--electric-blue-light);
+  --color-electric-blue-lighter: var(--electric-blue-lighter);
   --color-white: var(--white);
   --color-off-white: var(--off-white);
-  --color-forest-green: var(--forest-green);
-  --color-forest-green-light: var(--forest-green-light);
+  --color-light-gray: var(--light-gray);
+  --color-lighter-gray: var(--lighter-gray);
+  --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
+  --color-text-light: var(--text-light);
   --color-bg-primary: var(--bg-primary);
   --color-bg-secondary: var(--bg-secondary);
   --color-bg-accent: var(--bg-accent);
@@ -157,7 +165,7 @@ html, body {
 
 body {
   background: var(--bg-primary);
-  color: var(--forest-green);
+  color: var(--text-primary);
   font-family: var(--font-sans);
   line-height: 1.6;
 }
