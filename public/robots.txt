@@ -1,0 +1,20 @@
+# Robots.txt for Talky
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Disallow authentication pages
+Disallow: /sign-in
+Disallow: /sign-up
+Disallow: /api/
+
+# Disallow user-specific pages
+Disallow: /dashboard
+Disallow: /chat/
+Disallow: /call/
+Disallow: /settings
+
+# Sitemap location
+Sitemap: https://talky.app/sitemap.xml
+
