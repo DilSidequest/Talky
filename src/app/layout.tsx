@@ -17,6 +17,36 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Talky - AI-Powered Video Messaging",
   description: "Break down language barriers with real-time AI translation for video calls and messaging",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Talky",
+  },
+  formatDetection: {
+    telephone: false,
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Talky",
+    title: "Talky - AI-Powered Video Messaging",
+    description: "Break down language barriers with real-time AI translation for video calls and messaging",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Talky - AI-Powered Video Messaging",
+    description: "Break down language barriers with real-time AI translation for video calls and messaging",
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0066FF" },
+    { media: "(prefers-color-scheme: dark)", color: "#0066FF" },
+  ],
 };
 
 export default function RootLayout({
