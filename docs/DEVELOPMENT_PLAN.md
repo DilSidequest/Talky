@@ -199,31 +199,105 @@ Talky is an AI-powered video messaging app that enables real-time communication 
 
 ---
 
-## Phase 6: Mobile Optimization & Polish
+## Phase 6: AI Caller Page Development
+**Duration**: 4-5 days
+
+### 6.1 AI Caller Core Interface
+- [ ] Create AI caller main page layout
+- [ ] Implement phone number input with validation
+- [ ] Add contact selection from address book
+- [ ] Create call purpose/objective input field
+- [ ] Design voice personality selection interface
+- [ ] Add call scheduling functionality
+
+### 6.2 AI Caller Configuration
+- [ ] Build conversation script template editor
+- [ ] Implement AI voice settings (tone, speed, accent)
+- [ ] Create call duration and retry settings
+- [ ] Add custom prompt configuration
+- [ ] Implement call recording preferences
+- [ ] Design fallback scenario settings
+
+### 6.3 AI Caller Monitoring & Control
+- [ ] Create real-time call status dashboard
+- [ ] Implement live call monitoring interface
+- [ ] Add manual intervention controls
+- [ ] Build call progress visualization
+- [ ] Create emergency stop/takeover functionality
+- [ ] Design call quality indicators
+
+### 6.4 AI Caller History & Analytics
+- [ ] Build call history list with filters
+- [ ] Create detailed call report viewer
+- [ ] Implement call success/failure analytics
+- [ ] Add conversation transcript display
+- [ ] Create call performance metrics
+- [ ] Design export functionality for call data
+
+---
+
+## Phase 7: OCR Scanner Page Development
+**Duration**: 4-5 days
+
+### 7.1 OCR Scanner Core Interface
+- [ ] Create camera viewfinder with overlay guides
+- [ ] Implement real-time text detection preview
+- [ ] Add capture button with visual feedback
+- [ ] Create manual crop/selection tools
+- [ ] Design batch scanning interface
+- [ ] Add gallery import functionality
+
+### 7.2 OCR Processing & Results
+- [ ] Build text extraction results display
+- [ ] Implement editable text correction interface
+- [ ] Create confidence score indicators
+- [ ] Add language detection display
+- [ ] Design text formatting preservation
+- [ ] Implement copy/share functionality
+
+### 7.3 OCR Translation Integration
+- [ ] Create instant translation toggle
+- [ ] Implement side-by-side original/translated view
+- [ ] Add translation language selector
+- [ ] Build translation confidence indicators
+- [ ] Create translation history tracking
+- [ ] Design offline translation fallback
+
+### 7.4 OCR History & Management
+- [ ] Build scanned document history
+- [ ] Create search functionality for past scans
+- [ ] Implement document categorization/tagging
+- [ ] Add favorite/bookmark system
+- [ ] Create export options (PDF, text, image)
+- [ ] Design cloud sync indicators
+
+---
+
+## Phase 8: Mobile Optimization & Polish
 **Duration**: 3-4 days
 
-### 6.1 Mobile-Specific Optimizations
+### 8.1 Mobile-Specific Optimizations
 - [ ] Touch gesture implementations
 - [ ] Mobile keyboard handling
 - [ ] Orientation change support
 - [ ] Mobile-specific animations
 - [ ] Performance optimizations
 
-### 6.2 Progressive Web App (PWA)
+### 8.2 Progressive Web App (PWA)
 - [ ] Service worker implementation
 - [ ] Offline functionality
 - [ ] App manifest configuration
 - [ ] Push notification setup
 - [ ] Install prompt handling
 
-### 6.3 Performance & Accessibility
+### 8.3 Performance & Accessibility
 - [ ] Code splitting and lazy loading
 - [ ] Image optimization
 - [ ] Accessibility audit and fixes
 - [ ] Performance monitoring setup
 - [ ] SEO optimization
 
-### 6.4 Final Polish
+### 8.4 Final Polish
 - [ ] Animation refinements
 - [ ] Loading states and skeletons
 - [ ] Error boundary implementations

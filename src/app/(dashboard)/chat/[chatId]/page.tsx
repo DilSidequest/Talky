@@ -128,27 +128,29 @@ export default function ChatConversationPage({ params }: ChatPageProps) {
   return (
     <div className="flex flex-col h-[calc(100vh-8rem)] max-w-4xl mx-auto">
       {/* Chat Header */}
-      <div className="flex items-center justify-between p-4 border-b border-border-light bg-white">
-        <div className="flex items-center space-x-4">
-          <Link href="/chat">
-            <Button variant="ghost" size="sm">
-              <ArrowLeft className="w-4 h-4" />
-            </Button>
-          </Link>
-          
-          <Avatar className="w-10 h-10">
+      <div className="relative flex items-center justify-between p-4 border-b border-border-light bg-white">
+        {/* Back Button - Absolute positioned in corner */}
+        <Link href="/chat" className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-10">
+          <Button variant="ghost" size="sm" className="hover:bg-electric-blue-light">
+            <ArrowLeft className="w-4 h-4" />
+          </Button>
+        </Link>
+
+        {/* Centered Content */}
+        <div className="flex items-center justify-center space-x-3 flex-1 px-12 sm:px-16">
+          <Avatar className="w-10 h-10 shrink-0">
             <AvatarImage src={mockConversation.avatar} alt={mockConversation.name} />
             <AvatarFallback>{mockConversation.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
           </Avatar>
-          
-          <div>
-            <div className="flex items-center space-x-2">
-              <h2 className="font-semibold text-forest-green">{mockConversation.name}</h2>
-              <Badge variant="secondary" className="text-xs">
+
+          <div className="min-w-0 flex-1 text-center sm:text-left">
+            <div className="flex items-center justify-center sm:justify-start space-x-2">
+              <h2 className="font-semibold text-forest-green truncate">{mockConversation.name}</h2>
+              <Badge variant="secondary" className="text-xs shrink-0">
                 {mockConversation.language}
               </Badge>
             </div>
-            <div className="flex items-center space-x-2 mt-1">
+            <div className="flex items-center justify-center sm:justify-start space-x-2 mt-1">
               <ContactStatus
                 status={mockConversation.status}
                 isTyping={isTyping}

@@ -14,6 +14,46 @@ html, body {
   box-sizing: border-box;
 }
 
+/* Line clamp utilities */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* Safe area utilities for mobile */
+.safe-area-inset-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Custom color utilities */
+.text-forest-green {
+  color: var(--forest-green);
+}
+
+.bg-forest-green {
+  background-color: var(--forest-green);
+}
+
+.border-forest-green {
+  border-color: var(--forest-green);
+}
+
 :root {
   /* Primary Colors - Light Blue Theme */
   --electric-blue: #3B82F6;
@@ -32,6 +72,7 @@ html, body {
   --text-secondary: #64748B;
   --text-muted: #94A3B8;
   --text-light: #CBD5E1;
+  --forest-green: #0D2818;
 
   /* Background Colors - All Light */
   --bg-primary: #FFFFFF;
@@ -97,6 +138,7 @@ html, body {
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
   --color-text-light: var(--text-light);
+  --color-forest-green: var(--forest-green);
   --color-bg-primary: var(--bg-primary);
   --color-bg-secondary: var(--bg-secondary);
   --color-bg-accent: var(--bg-accent);
@@ -198,6 +240,31 @@ body {
 
 .loading-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom Scrollbar Styles */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--electric-blue) #F3F4F6;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #F3F4F6;
+  border-radius: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--electric-blue);
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: var(--electric-blue-hover);
 }
 
 @keyframes slideInRight {
